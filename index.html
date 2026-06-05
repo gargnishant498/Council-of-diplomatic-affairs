@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Council of Diplomatic Affairs — Where Diplomacy Meets Gen Z</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080a0f;
+  --bg2:#0d1018;
+  --bg3:#12151e;
+  --surface:#181c28;
+  --border:#ffffff0f;
+  --border2:#ffffff1a;
+  --gold:#c9a84c;
+  --gold2:#e8c97a;
+  --accent:#4f8ef7;
+  --text:#f0f2f8;
+  --muted:#8892a4;
+  --dim:#4a5468;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+h1,h2,h3,h4,.brand{font-family:'Syne',sans-serif}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,10,15,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.brand{font-size:1.3rem;font-weight:800;letter-spacing:0.08em;color:var(--gold);text-decoration:none}
+.brand span{color:var(--text)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:#0a0c10;padding:0.5rem 1.3rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;transition:background 0.2s,transform 0.15s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all 0.3s}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,10,15,0.98);backdrop-filter:blur(20px);padding:1.5rem 5%;z-index:99;border-bottom:1px solid var(--border)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:var(--muted);text-decoration:none;font-size:1rem;padding:0.8rem 0;border-bottom:1px solid var(--border);letter-spacing:0.04em}
+.mobile-menu a:last-child{border-bottom:none;color:var(--gold);font-weight:700}
+
+/* HERO */
+#home{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 5% 4rem;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 30%,transparent 100%)}
+.hero-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:0.4rem 1rem;font-size:0.78rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2rem}
+.hero-tag::before{content:'';display:block;width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+h1.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.02em;margin-bottom:1rem}
+h1.hero-title .gold{color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:520px;margin:0 auto 2.5rem;line-height:1.6;font-weight:300}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#0a0c10;padding:0.75rem 2rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;transition:all 0.2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--text);padding:0.75rem 2rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;transition:all 0.2s;border:1px solid var(--border2)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--gold)}
+.stat-label{font-size:0.8rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem}
+
+/* SECTIONS */
+section{padding:6rem 5%}
+.section-tag{display:inline-block;font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+.section-divider{width:40px;height:3px;background:var(--gold);margin-bottom:2rem}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-weight:300}
+.about-text p strong{color:var(--text);font-weight:500}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color 0.2s}
+.about-card:hover{border-color:var(--border2)}
+.about-card-icon{font-size:1.4rem;margin-bottom:0.6rem}
+.about-card h4{font-size:0.9rem;font-weight:700;letter-spacing:0.04em;margin-bottom:0.3rem}
+.about-card p{font-size:0.82rem;color:var(--muted);line-height:1.5}
+
+/* COMMITTEES */
+#committees{background:var(--bg)}
+.committees-intro{max-width:600px;margin-bottom:3.5rem}
+.committees-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.committee-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative;overflow:hidden;transition:all 0.25s;cursor:default}
+.committee-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity 0.25s}
+.committee-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.committee-card:hover::before{opacity:1}
+.committee-abbr{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--gold);margin-bottom:0.3rem}
+.committee-name{font-size:0.82rem;color:var(--muted);margin-bottom:0.8rem}
+.committee-desc{font-size:0.85rem;color:var(--dim);line-height:1.5}
+.committee-tag{display:inline-block;margin-top:0.8rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:3px;padding:0.2rem 0.6rem}
+
+/* SCHEDULE */
+#schedule{background:var(--bg2)}
+.schedule-intro{max-width:600px;margin-bottom:3.5rem}
+.timeline{position:relative;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--gold),var(--border),var(--border))}
+.timeline-item{position:relative;margin-bottom:2.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2.5rem;top:8px;width:10px;height:10px;background:var(--bg2);border:2px solid var(--gold);border-radius:50%;transform:translateX(-4px)}
+.timeline-date{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;font-weight:600}
+.timeline-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.3rem}
+.timeline-desc{font-size:0.88rem;color:var(--muted);line-height:1.6}
+.schedule-note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:1rem 1.25rem;font-size:0.88rem;color:var(--muted);margin-top:2rem}
+
+/* TEAM */
+#team{background:var(--bg)}
+.team-intro{max-width:600px;margin-bottom:3.5rem}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem 1.2rem;text-align:center;transition:all 0.25s}
+.team-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.team-avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--surface),var(--bg3));border:2px solid var(--border2);border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:var(--gold)}
+.team-name{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.3rem}
+.team-role{font-size:0.78rem;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase}
+.team-socials{display:flex;justify-content:center;gap:0.6rem;margin-top:0.8rem}
+.team-socials a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--dim);text-decoration:none;font-size:0.7rem;letter-spacing:0.04em;transition:all 0.2s}
+.team-socials a:hover{border-color:var(--gold);color:var(--gold)}
+
+/* REGISTRATION */
+#registration{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%)}
+.reg-container{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+.reg-info h2{margin-bottom:1rem}
+.reg-info p{color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:2rem}
+.reg-perks{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+.reg-perks li{display:flex;align-items:flex-start;gap:0.7rem;font-size:0.88rem;color:var(--muted)}
+.reg-perks li::before{content:'→';color:var(--gold);flex-shrink:0;margin-top:1px}
+.reg-form{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem}
+.reg-form h3{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem}
+.reg-form .form-sub{font-size:0.85rem;color:var(--muted);margin-bottom:2rem}
+.form-group{margin-bottom:1.2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{display:block;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;font-weight:600}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:0.7rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+input::placeholder,textarea::placeholder{color:var(--dim)}
+select{appearance:none;cursor:pointer}
+textarea{resize:vertical;min-height:90px}
+.form-submit{width:100%;background:var(--gold);color:#0a0c10;border:none;padding:0.9rem;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:0.5rem}
+.form-submit:hover{background:var(--gold2)}
+.form-note{font-size:0.75rem;color:var(--dim);text-align:center;margin-top:0.8rem}
+
+/* FOOTER */
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:3rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+.footer-brand .brand{display:block;margin-bottom:0.8rem;font-size:1.4rem}
+.footer-brand p{font-size:0.85rem;color:var(--muted);line-height:1.6;max-width:280px}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);margin-bottom:1rem}
+.footer-col a{display:block;font-size:0.85rem;color:var(--dim);text-decoration:none;margin-bottom:0.5rem;transition:color 0.2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:0.8rem;color:var(--dim)}
+.footer-socials{display:flex;gap:0.6rem}
+.footer-socials a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--surface);border:1px solid var(--border);border-radius:4px;color:var(--dim);text-decoration:none;font-size:0.75rem;font-weight:600;transition:all 0.2s}
+.footer-socials a:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s,transform 0.6s}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .about-grid{grid-template-columns:1fr}
+  .reg-container{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  section{padding:4rem 5%}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="brand">CDA<span>MUN</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#committees">Committees</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+  <a href="#registration" class="nav-cta">Register</a>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#committees" onclick="closeMenu()">Committees</a>
+  <a href="#schedule" onclick="closeMenu()">Schedule</a>
+  <a href="#team" onclick="closeMenu()">Team</a>
+  <a href="#registration" onclick="closeMenu()">Register Now →</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Season 1 · 2025</div>
+  <h1 class="hero-title">Council of<br><span class="gold">Diplomatic</span> Affairs</h1>
+  <p style="font-family:'Syne',sans-serif;font-size:clamp(0.9rem,2vw,1.1rem);letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">Model United Nations</p>
+  <p class="hero-sub">Diplomacy isn't old school — it's the new flex. Join the most ambitious young minds for debates that actually matter.</p>
+  <div class="hero-btns">
+    <a href="#registration" class="btn-primary">Register Now</a>
+    <a href="#about" class="btn-outline">Explore</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Committees</div></div>
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Delegates</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Days</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Impact</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title">More Than A Conference.<br>A Movement.</h2>
+      <div class="section-divider"></div>
+      <p>Council of Diplomatic Affairs is a Model United Nations conference built for a generation that doesn't just talk about change — they <strong>draft it</strong>.</p>
+      <p>We blend the rigor of traditional UN diplomacy with a Gen Z energy that keeps things real, relevant, and razor sharp. Whether you're a first-timer finding your voice or a veteran with a binder full of position papers — this is your room.</p>
+      <p>Our committees are curated with precision, our executive board comprises seasoned MUNers, and our delegations are a vibrant mix of leaders, debaters, and thinkers who refuse to be boring about the world's biggest problems.</p>
+      <a href="#registration" class="btn-primary" style="display:inline-block;margin-top:1.5rem">Be Part of It →</a>
+    </div>
+    <div class="about-cards reveal">
+      <div class="about-card">
+        <div class="about-card-icon">🧠</div>
+        <h4>Top Exec Board</h4>
+        <p>Seasoned MUN professionals ensuring authentic, high-quality simulations.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🌐</div>
+        <h4>Global Committees</h4>
+        <p>From Lok Sabha to UNHRC — agendas that are actually relevant.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🤝</div>
+        <h4>Elite Network</h4>
+        <p>Connect with peers from across the nation. Build real relationships.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏆</div>
+        <h4>Skill Mastery</h4>
+        <p>Public speaking, negotiation, and critical thinking — levelled up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITTEES -->
+<section id="committees">
+  <div class="committees-intro reveal">
+    <span class="section-tag">Committees</span>
+    <h2 class="section-title">Pick Your Arena</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--muted);font-weight:300;line-height:1.7">Seven committees. Zero filler. Each committee is a different lens on the world — find the one that matches how you think.</p>
+  </div>
+  <div class="committees-grid">
+    <div class="committee-card reveal">
+      <div class="committee-abbr">UNSC</div>
+      <div class="committee-name">United Nations Security Council</div>
+      <div class="committee-desc">The highest-stakes room in diplomacy. Five permanent members, one agenda, zero easy answers.</div>
+      <div class="committee-tag">Advanced</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">UNHRC</div>
+      <div class="committee-name">UN Human Rights Council</div>
+      <div class="committee-desc">Where rights meet realpolitik. Debate the issues that define our generation's moral compass.</div>
+      <div class="committee-tag">Intermediate</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">UNGA</div>
+      <div class="committee-name">United Nations General Assembly</div>
+      <div class="committee-desc">The world's largest democracy in action. Every nation has a voice — make yours count.</div>
+      <div class="committee-tag">Beginner–Intermediate</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">LOK</div>
+      <div class="committee-name">Lok Sabha</div>
+      <div class="committee-desc">India's house of the people — simulated with the intensity of a real Parliament session.</div>
+      <div class="committee-tag">Intermediate</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">UNCSW</div>
+      <div class="committee-name">Commission on Status of Women</div>
+      <div class="committee-desc">Advocating equity, not just equality. The committee where intersectionality isn't a buzzword.</div>
+      <div class="committee-tag">All Levels</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">G20</div>
+      <div class="committee-name">Group of Twenty</div>
+      <div class="committee-desc">Global economics meets global politics. Think big — we're talking GDP-scale decisions here.</div>
+      <div class="committee-tag">Advanced</div>
+    </div>
+    <div class="committee-card reveal">
+      <div class="committee-abbr">IP</div>
+      <div class="committee-name">International Press</div>
+      <div class="committee-desc">For the storytellers. Reporting, photography, and caricature — journalism in the UN world.</div>
+      <div class="committee-tag">All Levels</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="schedule-intro reveal">
+    <span class="section-tag">Schedule</span>
+    <h2 class="section-title">Two Days. Maximum Intensity.</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--muted);font-weight:300;line-height:1.7">Update dates as confirmed. Every moment of YOURMUN is designed to challenge, connect, and inspire.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" class="reveal">
+    <div>
+      <p style="font-family:'Syne',sans-serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:700">Day 1 — [Add Date]</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">09:00 AM</div>
+          <div class="timeline-title">Inauguration Ceremony</div>
+          <div class="timeline-desc">Opening address by the Secretary General. Chief guests, keynote, and the vibe-setting moment everyone remembers.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">11:00 AM</div>
+          <div class="timeline-title">Committee Sessions Begin</div>
+          <div class="timeline-desc">Roll call, agenda setting, and the first real debates. Bring your position paper.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01:00 PM</div>
+          <div class="timeline-title">Lunch Break</div>
+          <div class="timeline-desc">Recharge, network, and lobby. Some of the best deals get made over lunch.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">02:30 PM</div>
+          <div class="timeline-title">Afternoon Sessions</div>
+          <div class="timeline-desc">Moderated and unmoderated caucuses. Draft resolutions start taking shape.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">07:00 PM</div>
+          <div class="timeline-title">Cultural Evening</div>
+          <div class="timeline-desc">The social event of the season. Performances, networking, and good energy all around.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:'Syne',sans-serif;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;font-weight:700">Day 2 — [Add Date]</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">09:30 AM</div>
+          <div class="timeline-title">Morning Sessions Resume</div>
+          <div class="timeline-desc">Final lobbying, merging blocs, and polishing draft resolutions for the big vote.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">12:00 PM</div>
+          <div class="timeline-title">Voting Procedure</div>
+          <div class="timeline-desc">Resolutions go to the floor. Every vote counts. This is what it all leads to.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01:30 PM</div>
+          <div class="timeline-title">Lunch Break</div>
+          <div class="timeline-desc">Last chance to connect before the closing ceremony.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">03:00 PM</div>
+          <div class="timeline-title">Closing Ceremony</div>
+          <div class="timeline-desc">Awards, acknowledgments, and the moment your hard work gets recognized.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">04:30 PM</div>
+          <div class="timeline-title">Delegate Farewell</div>
+          <div class="timeline-desc">Wrap up, photos, and see you next season. The legacy continues.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="schedule-note reveal">📌 All timings are tentative and subject to change. Registered delegates will receive the final schedule via email.</div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-intro reveal">
+    <span class="section-tag">The Team</span>
+    <h2 class="section-title">The People Behind It</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--muted);font-weight:300;line-height:1.7">Seasoned, passionate, and slightly obsessed with getting every detail right. This is your executive board.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">SG</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">Secretary General</div>
+      <div class="team-socials"><a href="#">in</a><a href="#">ig</a></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">PR</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">President</div>
+      <div class="team-socials"><a href="#">in</a><a href="#">ig</a></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">CC</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">Conference Convenor</div>
+      <div class="team-socials"><a href="#">ig</a></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">VP</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">Vice President</div>
+      <div class="team-socials"><a href="#">in</a><a href="#">ig</a></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">HT</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">Head of Technology</div>
+      <div class="team-socials"><a href="#">in</a><a href="#">ig</a></div>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">HO</div>
+      <div class="team-name">Name Here</div>
+      <div class="team-role">Head of Operations</div>
+      <div class="team-socials"><a href="#">ig</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section id="registration">
+  <div class="reg-container">
+    <div class="reg-info reveal">
+      <span class="section-tag">Registration</span>
+      <h2 class="section-title">Ready to Represent?</h2>
+      <div class="section-divider"></div>
+      <p>Seats are limited and fill up fast. Secure your spot at Council of Diplomatic Affairs before it's too late. Registration closes [date].</p>
+      <ul class="reg-perks">
+        <li>Full 2-day conference access across all committee sessions</li>
+        <li>Delegate kit with resources, position paper templates &amp; stationery</li>
+        <li>Access to the cultural evening on Day 1</li>
+        <li>Certificate of participation for all delegates</li>
+        <li>Awards for outstanding delegates in each committee</li>
+        <li>Networking with delegates from across the country</li>
+        <li>Meals and refreshments included both days</li>
+      </ul>
+      <div style="margin-top:2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem">
+        <p style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem">Registration Fee</p>
+        <p style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--gold)">₹[Amount]</p>
+        <p style="font-size:0.82rem;color:var(--dim);margin-top:0.3rem">Per delegate · All committees</p>
+      </div>
+    </div>
+    <div class="reg-form reveal">
+      <h3>Delegate Registration</h3>
+      <p class="form-sub">Fill in your details and we'll confirm your seat within 48 hours.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Arjun"/>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Sharma"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="arjun@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>School / College / Institution</label>
+        <input type="text" placeholder="Your institution name"/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" placeholder="Udaipur"/>
+        </div>
+        <div class="form-group">
+          <label>Grade / Year</label>
+          <input type="text" placeholder="e.g. 11th / 2nd Year"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Committee Preference</label>
+        <select>
+          <option value="">Select a committee</option>
+          <option>UNSC — United Nations Security Council</option>
+          <option>UNHRC — UN Human Rights Council</option>
+          <option>UNGA — UN General Assembly</option>
+          <option>Lok Sabha</option>
+          <option>UNCSW — Commission on Status of Women</option>
+          <option>G20</option>
+          <option>International Press</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>MUN Experience</label>
+        <select>
+          <option value="">Select experience level</option>
+          <option>Beginner — This is my first MUN</option>
+          <option>Intermediate — 1–3 MUNs attended</option>
+          <option>Advanced — 4+ MUNs attended</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything else? (Optional)</label>
+        <textarea placeholder="Any special requirements, questions, or just say hi..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Submit Registration →</button>
+      <p class="form-note">By registering you agree to our terms &amp; conditions. We'll reach out within 48 hours with payment details.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="brand">CDA<span style="color:var(--text)">MUN</span></a>
+      <p>Council of Diplomatic Affairs — a Model United Nations conference where the next generation of diplomats, thinkers, and leaders find their voice.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#committees">Committees</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#team">Team</a>
+    </div>
+    <div class="footer-col">
+      <h4>Register</h4>
+      <a href="#registration">Delegate Registration</a>
+      <a href="#">Press Corps</a>
+      <a href="#">Sponsorship</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Terms &amp; Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Council of Diplomatic Affairs. All rights reserved. Made with ☕ and a lot of position papers.</p>
+    <div class="footer-socials">
+      <a href="#">ig</a>
+      <a href="#">in</a>
+      <a href="#">tw</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+// Scroll reveal
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Form submit
+function handleSubmit(){
+  const inputs = document.querySelectorAll('#registration input, #registration select');
+  let filled = true;
+  inputs.forEach(i=>{if(i.value.trim()===''){filled=false;i.style.borderColor='rgba(201,168,76,0.6)'}else{i.style.borderColor=''}});
+  if(!filled){alert('Please fill in all required fields.');return;}
+  alert('Thanks for registering! 🎉\n\nWe\'ll confirm your seat and send payment details within 48 hours. Check your email!');
+}
+</script>
+</body>
+</html>
